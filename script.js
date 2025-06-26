@@ -79,17 +79,17 @@ function draw() {
     drawRect(0, 0, mapCanvas.width, mapCanvas.height, 'black');
 
     // Оси координат
-    drawLine(worldX, worldY, worldX, worldY - 10000, 'red', 10);     // вверх
-    drawLine(worldX, worldY, worldX, worldY + 10000, 'blue', 10);    // вниз
-    drawLine(worldX, worldY, worldX + 10000, worldY, 'green', 10);   // вправо
-    drawLine(worldX, worldY, worldX - 10000, worldY, 'yellow', 10);  // влево
-    drawCircle(worldX, worldY, 50, 0, 'white');
+    drawLine(worldX, worldY, worldX, worldY - 10000, 'red', 5);     // вверх
+    drawLine(worldX, worldY, worldX, worldY + 10000, 'blue', 5);    // вниз
+    drawLine(worldX, worldY, worldX + 10000, worldY, 'green', 5);   // вправо
+    drawLine(worldX, worldY, worldX - 10000, worldY, 'yellow', 5);  // влево
+    drawCircle(worldX, worldY, 10, 0, 'white');
 
     for (const portal of portals) {
         const { x, y } = worldToScreen(portal.x, portal.y);
 
         // Отрисовка круга портала
-        drawCircle(x, y, 50, 0, 'white');
+        drawCircle(x, y, 10, 0, 'white');
 
         // Выбор ведущей оси
         const headLine = Math.abs(portal.x) < Math.abs(portal.y) ? 'x' : 'y';
@@ -103,18 +103,18 @@ function draw() {
 
         // Отрисовка линии от портала к оси
         if (headLine === 'x') {
-            drawLine(x, y, worldX, y, color, 10);
+            drawLine(x, y, worldX, y, color, 5);
         } else {
-            drawLine(x, y, x, worldY, color, 10);
+            drawLine(x, y, x, worldY, color, 5);
         }
 
         // Подпись
-        ctx.font = '50px Georgia';
+        ctx.font = '20px Georgia';
         ctx.fillStyle = 'white';
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 3;
-        ctx.strokeText(portal.nickname, x + 60, y);
-        ctx.fillText(portal.nickname, x + 60, y);
+        ctx.strokeText(portal.nickname, x + 30, y);
+        ctx.fillText(portal.nickname, x + 30, y);
 
         // ===== Координаты мыши =====
         const mouseWorldX = mouseScreenX - worldX;
@@ -122,15 +122,15 @@ function draw() {
 
         const text = `X: ${mouseWorldX.toFixed(0)} | Y: ${mouseWorldY.toFixed(0)}`;
 
-        ctx.font = '120px monospace';
-        ctx.fillStyle = 'white';
+        ctx.font = '20px monospace';
+        ctx.fillStyle = 'black';
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 3;
 
         // Позиция: справа сверху
         ctx.textAlign = 'right';
-        ctx.strokeText(text, mapCanvas.width -10, 130);
-        ctx.fillText(text, mapCanvas.width -10, 130);
+        ctx.strokeText(text, mapCanvas.width -10, 30);
+        ctx.fillText(text, mapCanvas.width -10, 30);
         ctx.textAlign = 'left';
     }
 }
@@ -143,7 +143,7 @@ function renderLoop() {
 
 renderLoop();
 
-// События мыши
+// События 
 document.addEventListener('mousedown', (event) => {
     mouseClicked = true;
     lastMouseX = event.clientX;
@@ -167,3 +167,4 @@ mapCanvas.addEventListener('mousemove', (event) => {
         lastMouseY = event.clientY;
     }
 });
+
