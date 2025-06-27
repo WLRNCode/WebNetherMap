@@ -89,7 +89,7 @@ function Main() {
         drawRect(0, 0, mapCanvas.width, mapCanvas.height, '#1b1a1f');
 
         // Оси координат
-        drawLine(worldX, worldY, worldX, worldY - 10000 * scale, '#fc5455', 5) * scale;     // вверх
+        drawLine(worldX, worldY, worldX, worldY - 10000 * scale, '#fc5455', 5 * scale);     // вверх
         drawLine(worldX, worldY, worldX, worldY + 10000 * scale, '#605bde', 5 * scale);    // вниз
         drawLine(worldX, worldY, worldX + 10000 * scale, worldY, '#41b06d', 5 * scale);   // вправо
         drawLine(worldX, worldY, worldX - 10000 * scale, worldY, '#fcc800', 5 * scale);  // влево
@@ -145,7 +145,7 @@ function Main() {
             ctx.font = `${20}px monospace`;
             ctx.fillStyle = 'black';
             ctx.strokeStyle = 'white';
-            ctx.lineWidth = 3 * scale;
+            ctx.lineWidth = 3;
 
             // Позиция: справа сверху
             ctx.textAlign = 'right';
