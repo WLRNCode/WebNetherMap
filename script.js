@@ -129,9 +129,8 @@ function Main() {
             
 
             // Подпись
-            ctx.font = `${20 * scale}px Georgia`;
+            ctx.font = `${20 * scale}px monospace`;
             ctx.fillStyle = 'white';
-            ctx.strokeStyle = 'black';
             ctx.lineWidth = 3;
             ctx.strokeText(portal.nickname, x + 30, y);
             ctx.fillText(portal.nickname, x + 30, y);
@@ -141,8 +140,6 @@ function Main() {
             const coordText = `X: ${worldMouse.x.toFixed(0)} | Y: ${worldMouse.y.toFixed(0)}`;
             ctx.font = '20px monospace';
             ctx.textAlign = 'right';
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 3;
             ctx.strokeText(coordText, mapCanvas.width - 10, 30);
             ctx.fillStyle = 'white';
             ctx.fillText(coordText, mapCanvas.width - 10, 30);
