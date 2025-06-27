@@ -137,20 +137,15 @@ function Main() {
             ctx.fillText(portal.nickname, x + 30, y);
 
             // ===== Координаты мыши =====
-            const mouseWorldX = mouseScreenX - worldX;
-            const mouseWorldY = mouseScreenY - worldY;
-
-            const text = `X: ${mouseWorldX.toFixed(0)} | Y: ${mouseWorldY.toFixed(0)}`;
-
-            ctx.font = `${20}px monospace`;
-            ctx.fillStyle = 'black';
-            ctx.strokeStyle = 'white';
-            ctx.lineWidth = 3;
-
-            // Позиция: справа сверху
+            const worldMouse = screenToWorld(mouseScreenX, mouseScreenY);
+            const coordText = `X: ${worldMouse.x.toFixed(0)} | Y: ${worldMouse.y.toFixed(0)}`;
+            ctx.font = '20px monospace';
             ctx.textAlign = 'right';
-            ctx.strokeText(text, mapCanvas.width -10, 30);
-            ctx.fillText(text, mapCanvas.width -10, 30);
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 3;
+            ctx.strokeText(coordText, mapCanvas.width - 10, 30);
+            ctx.fillStyle = 'white';
+            ctx.fillText(coordText, mapCanvas.width - 10, 30);
             ctx.textAlign = 'left';
         }
     }
